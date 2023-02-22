@@ -1,0 +1,132 @@
+# -*-mode:ruby-*- vim:ft=ruby
+
+# ~/.Brewfile
+# =============================================================================
+# Project dependencies installed using `brew bundle` or `~/dotfiles.sh`.
+#
+# See https://github.com/Homebrew/homebrew-bundle
+
+tap "buo/cask-upgrade"
+tap "eugenmayer/dockersync"
+tap "heroku/brew"
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+tap "homebrew/services"
+# tap "twpayne/taps"
+
+brew "coreutils"
+brew "findutils"
+brew "gnu-sed"                             # brew install gnu-sed --with-default-names
+brew "bat"
+brew "curl"
+# brew "dockutil"
+brew "exa"
+brew "ffmpeg"
+brew "gh"
+brew "git"
+brew "git-lfs"
+brew "gnu-units"
+brew "graphviz"
+brew "jq"
+brew "node"
+brew "openjdk"
+brew "pinentry-mac"
+brew "tmux"
+# brew "yt-dlp"
+brew "asdf"                                 # Extendable version manager
+brew "autoconf"                             # Configuration shell script maker
+brew "bash"                                 # Bourne again shell
+brew "bash-completion@2"                    # Autocompletions for `bash`
+brew "colordiff"                            # Colour-highlighted diff output
+brew "direnv"                               # Directory specific env variables
+# brew "flake8"                               # Python style guide enforcer
+# brew "fswatch"                              # File change monitor
+# brew "geoip"                                # Geographic IP lookup
+brew "gnupg"                                # GNU privacy guard
+brew "htop"                                 # Interactive system-monitor
+#brew "graphicsmagick"                      # GraphicsMagick image processor
+#brew "imagemagick"                         # ImageMagick image processor
+brew "jpegoptim"                            # JPEG compressor/optimizer
+brew "less"                                 # Terminal pager
+brew "lesspipe"                             # Input filter for `less`
+# brew "mariadb"                              # MariaDB RDBMS
+# brew "micro"                                # Micro text editor
+brew "npm"                                  # Node package manager
+#brew "optipng"                             # PNG compressor/optimizer
+brew "tidy-html5"                           # HTML corrector
+brew "neofetch"                             # System information tool
+brew "pipenv"                               # Python packaging tool
+brew "pyenv"                                # Python version manager
+brew "pyenv-virtualenv"                     # virtualenv and conda manager
+# brew "denji/nginx/nginx-full", args: ["with-rmtp"], restart_service: :changed
+# brew "mysql@5.6", restart_service: true, link: true, conflicts_with: ["mysql"]
+# brew "postgresql", restart_service: true    # PostgreSQL RDBMS
+# brew "ruby-build"                           # Ruby version managger
+# brew "rbenv"                                # Ruby environment manager
+brew "ripgrep"                              # Recursive Regex search tool
+brew "fd"
+brew "openssh"
+brew "ssh-copy-id"
+brew "rsync"                                # File transfer and sync tool
+brew "screenfetch"                          # Screenshot information tool
+# brew "starship"                             # Starship cross-shell prompt
+brew "telnet"                               # Virtual terminal client
+brew "tmuxinator"                           # Tmux session controller
+brew "travis"                               # Travis CI client
+brew "unison"                               # Unison file synchronizer
+brew "wget"                                 # Web content downloader
+brew "zlib"                                 # Lossless data-compression library
+brew "neovim"
+# brew "eugenmayer/dockersync/unox"           # Docker sync daemon
+# brew "heroku/brew/heroku"                   # Heroku CLI
+# brew "twpayne/taps/chezmoi"                 # Chezmoi dotfiles manager
+
+# some CTF tools; see https://github.com/ctfs/write-ups.
+# brew "aircrack-ng"
+# brew "bfg"
+# brew "binutils"
+# brew "binwalk"
+# brew "cifer"
+# brew "dex2jar"
+# brew "dns2tcp"
+# brew "fcrackzip"
+# brew "foremost"
+# brew "hashpump"
+# brew "hydra"
+# brew "john"
+# brew "knock"
+# brew "netpbm"
+brew "nmap"
+# brew "pngcheck"
+# brew "socat"
+brew "sqlmap"
+# brew "tcpflow"
+# brew "tcpreplay"
+# brew "tcptrace"
+# brew "ucspi-tcp # `tcpserver` etc.""
+# brew "xpdf"
+brew "xz"
+
+cask "google-chrome"
+cask "firefox"
+cask "hammerspoon"
+cask "iterm2"
+cask "karabiner-elements"
+# cask "vim"
+# cask "spotify"
+# cask "vagrant"
+cask "visual-studio-code"
+cask "vlc"
+cask "squirrel"
+# cask "android-platform-tools"               # Android SDK platform-tools
+# cask "font-dejavusansmono-nerd-font-mono"   # DejaVu Sans Mono Nerd Font
+# cask "font-firacode-nerd-font"              # Fira Code Nerd Font
+# cask "font-hack-nerd-font-mono"             # Hack Mono Nerd Font
+# cask "font-meslo-nerd-font-mono"            # Meslo Mono Nerd Font
+# cask "font-sourcecodepro-nerd-font-mono"    # Source Code Pro Mono Nerd Font
+# cask "powershell"                           # Cross-platform shell
+
+{{ if .personal -}}
+cask "nextcloud"
+{{ end -}}

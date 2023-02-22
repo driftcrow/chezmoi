@@ -1,0 +1,128 @@
+
+{{ $full_name := promptStringOnce . "full_name" "What is your full name" }}
+{{ $username := promptStringOnce . "username" "What is your username" }}
+{{ $hostname := promptString "your hostname" }}
+{{ if eq $hostname "" }}
+{{ $hostname := .chezmoi.hostname -}}
+{{ end }}
+
+{{ $email := promptStringOnce . "email" "What is your email address" }}
+
+{{- $gh_noti_mail := promptStringOnce . "gh_noti_mail" "GitHub notification email" -}}
+{{- $gl_noti_mail := promptStringOnce . "gl_noti_mail" "GitLab notification email" -}}
+
+{{- $purpose := promptString "purpose (e.g. 'work')" -}}
+
+{{- $kubernetes := false -}}{{/* true if this machine is used for Kubernetes work */}}
+
+{{- $minimal:= false -}}{{/* true if init with minimal */}}
+{{- $devops := promptBool "For devops" -}}{{/* true if init for devops */}}
+{{- $develop := promptBool "For develop" -}}{{/* true if init for development */}}
+{{- $hacker := promptBool "For hacker" -}}{{/* true if init for hacker */}}
+{{- $game := promptBool "For game" -}}{{/* true if init for game */}}
+{{- $personal := promptBool "For personal" -}}{{/* true if this machine should have personal secrets  */}}
+
+{{- $isolated := false -}}{{/* true if this machine is isolated from internet */}}
+{{- $is_wsl := false -}}{{/* true if running on wsl */}}
+{{- $is_surface := false -}}{{/* true if running on a surface */}}
+{{- $is_mobile := false -}}{{/* true if running on a mobile device */}}
+{{- $is_remote := false -}}{{/* true if running on remote machine */}}
+
+
+
+{{- if eq .chezmoi.os "darwin" -}}
+{{ $is_mobile = true -}}
+{{- end -}}
+
+{{- if eq .chezmoi.os "windows" -}}
+
+{{- end -}}
+
+# For wsl/surface
+{{ if (eq .chezmoi.os "linux") }}
+
+{{   if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+{{ $is_wsl = true -}}
+{{ $is_remote = true -}}
+{{   end }}
+
+{{   if (.chezmoi.kernel.osrelease | lower | contains "surface") }}
+{{ $is_surface = true -}}
+{{ $is_mobile = true -}}
+{{ end -}}
+{{ end }}
+
+
+{{- if not true -}}
+{{-   if eq $hostname "runtime1" -}}
+{{-     $headless = true -}}
+{{-     $isovalent = true -}}
+{{-     $kubernetes = true -}}
+{{-   else if eq $hostname "raspberrypi4" -}}
+{{-     $headless = true -}}
+{{-     $personal = true -}}
+{{-   else if eq $hostname "elitedesk" -}}
+{{-     $headless = true -}}
+{{-     $isovalent = true -}}
+{{-     $kubernetes = true -}}
+{{-     $personal = true -}}
+{{-   else if eq $hostname "thinkpad" -}}
+{{-     $personal = true -}}
+{{-   else if eq $hostname "toms-mba" -}}
+{{-     $personal = true -}}
+{{-   else if eq $hostname "toms-mbp-16" -}}
+{{-     $isovalent = true -}}
+{{-     $kubernetes = true -}}
+{{-   else if stdinIsATTY -}}
+{{-     if hasKey . "headless" -}}
+{{-       $headless = .headless -}}
+{{-     else -}}
+{{-       $headless = promptBool "headless" -}}
+{{-     end -}}
+{{-     if hasKey . "ephemeral" -}}
+{{-       $ephemeral = .ephemeral -}}
+{{-     else -}}
+{{-       $ephemeral = promptBool "ephemeral" -}}
+{{-     end -}}
+{{-     if hasKey . "kubernetes" -}}
+{{-       $kubernetes = .kubernetes -}}
+{{-     else -}}
+{{-       $kubernetes = promptBool "kubernetes" -}}
+{{-     end -}}
+{{-   else -}}
+{{-     $headless = true -}}
+{{-     $ephemeral = true -}}
+{{-   end -}}
+{{- end -}}
+
+sourceDir = "{{ .chezmoi.sourceDir }}"
+# verbose = true
+
+[data]
+  full_name = {{ $full_name | quote }}
+  username = {{ $username | quote }}
+  email = {{ $email | quote }}
+  gh_noti_mail = {{ $gh_noti_mail  | quote }}
+  gl_noti_mail = {{ $gl_noti_mail  | quote }}
+  hostname = {{ $hostname | quote }}
+  purpose = {{ $purpose | quote }}
+  ephemeral = false
+  headless = false
+  kubernetes = {{ $kubernetes }}
+
+  minimal = {{ $minimal }}
+  devops = {{ $devops  }}
+  develop = {{ $develop }}
+  hacker = {{ $hacker  }}
+  game = {{ $game }}
+  personal = {{ $personal }}
+
+  is_mobile = {{ $is_mobile }}
+  is_surface = {{ $is_surface }}
+  is_wsl = {{ $is_wsl }}
+  is_remote = {{ $is_remote }}
+  isolated = {{ $isolated }}
+
+# [diff]
+  # command = "vim"
+  # args = ["-d", "{{`{{ .Destination }}`}}", "{{`{{ .Target }}`}}"]

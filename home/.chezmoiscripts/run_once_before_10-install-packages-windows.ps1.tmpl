@@ -1,0 +1,134 @@
+{{ if (eq .chezmoi.os "windows") -}}
+
+scoop bucket add extras
+scoop bucket add nerd-fonts
+scoop bucket add ackerr https://github.com/Ackerr/scoop-bucket
+scoop bucket add iszy https://github.com/ZvonimirSun/scoop-iszy
+scoop bucket add dorado https://github.com/chawyehsu/dorado
+scoop bucket add scoopet https://github.com/ivaquero/scoopet
+
+scoop install 7zip
+scoop install ag
+scoop install bat
+scoop install openssh
+scoop install aria2
+# scoop install dig
+# scoop install docker-compose
+scoop install curl grep sed less touch
+scoop install neofetch
+# scoop install python ruby go perl
+
+scoop install eksctl
+scoop install firacode
+scoop install fzf
+scoop install gcc
+scoop install go
+scoop install helm
+# scoop install hugo
+# scoop install k9s
+# scoop install kubectl
+# scoop install kustomize
+scoop install lab
+scoop install make
+scoop install protobuf
+scoop install ripgrep
+scoop install robo3t
+scoop install skaffold
+# scoop install starship
+scoop install stern
+scoop install telegram
+scoop install vim
+scoop install neovim
+scoop install wget
+scoop install yarn
+scoop install utools 
+scoop install ventoy 
+scoop install qbittorrent 
+scoop install picgo 
+scoop install clash-for-windows
+scoop install ccleaner 
+scoop install nodejs@14.15.1
+scoop hold nodejs
+
+scoop install keepassxc
+scoop install Clash-for-Windows
+scoop install neteasemusic
+scoop install Weasel
+scoop install msys2-cn
+scoop install WPSOffice-cn
+# scoop install WeChatWork
+
+scoop install wechat
+
+scoop install winget
+# winget install Tencent.QQ
+# for emacs
+# scoop install emacs
+# scoop install fd llvm
+# scoop bucket add wsw0108 https://github.com/wsw0108/scoop-bucket.git
+# scoop install librime
+#
+choco install chocolateygui
+# :::: BROWSERS
+# choco upgrade googlechrome -y
+# choco upgrade firefox -y
+choco upgrade vivaldi -y
+
+# :::: DEV TOOLS
+choco upgrade conemu -y
+choco upgrade sourcetree -y
+choco upgrade microsoft-windows-terminal -y
+# choco upgrade vscode -y
+
+# :::: MEDIA
+choco upgrade exiftool -y
+choco upgrade potplayer -y
+
+# :::: CREATIVE
+choco upgrade foxitreader -y
+choco upgrade hugo -y
+
+# :::: CLI TOOLS
+# choco upgrade syncthing -y
+choco upgrade zoxide -y
+choco upgrade zstandard -y
+choco upgrade delta -y
+
+# :::: UTILS
+# choco upgrade googledrive -y
+choco upgrade coretemp -y
+choco upgrade directoryopus -y
+choco upgrade autoruns -y
+choco upgrade unchecky -y
+choco upgrade powertoys -y
+choco upgrade treesizefree -y
+choco upgrade bleachbit -y
+choco upgrade revo-uninstaller -y
+choco upgrade shutup10 -y
+choco upgrade linkshellextension -y
+
+# :::: FONTS
+choco upgrade firacode -y
+choco upgrade fontbase -y
+choco upgrade sourcecodepro -y
+choco upgrade hackfont -y
+choco upgrade cascadiamono -y
+choco upgrade cascadiacode -y
+choco upgrade cascadiafonts -y
+choco upgrade cascadiamonopl -y
+choco upgrade cascadiacodepl -y
+
+# :::: GAMES
+{{ if .game}}
+choco upgrade goggalaxy -y
+# choco upgrade steam -y
+choco upgrade origin -y
+choco upgrade epicgameslauncher -y
+{{ end -}}
+
+# :::: Drivers
+# choco upgrade geforce-experience -y
+# choco upgrade geforce-game-ready-driver -y
+#:: choco upgrade intel-dsa -y
+
+{{ end -}}

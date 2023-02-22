@@ -1,0 +1,7 @@
+editor = "nvim"
+
+[directions]
+	up = "k"
+	down = "j"
+	right = "l"
+	left = "h"

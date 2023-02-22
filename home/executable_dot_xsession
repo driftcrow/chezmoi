@@ -1,0 +1,11 @@
+#!/usr/bin/bash
+
+. $HOME/.xinitrc
+
+if [ -f /usr/bin/qtile ]; then
+        exec dbus-launch --auto-syntax --exit-with-session /usr/bin/qtile start
+elif [ -f /usr/bin/i3 ]; then
+        exec i3
+elif [ -f /usr/local/bin/dwm ]; then
+	. $HOME/.bin/startdwm
+fi

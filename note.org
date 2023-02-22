@@ -1,0 +1,14 @@
+#+TITLE: Note
+
+
+* 标签
+** 操作系统
+Dawn Ubuntu Arch Centos Windows WSL VMS
+** 部署规模
+完整 最小
+** 网络环境
+全网 有网 局网
+** 个人
+有 无 driftcrow liubin sink temprary
+* 问题
+** Sway
